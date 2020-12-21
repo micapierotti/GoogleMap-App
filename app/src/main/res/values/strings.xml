@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">ParcialApps</string>
+    <string name="titulo">Ejemplo Parcial</string>
+    <string name="editText">Ingrese su lugar Favorito</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyD6unyo5s6jp67_9_E6Y6pod60IqJW4mws</string>
+</resources>
