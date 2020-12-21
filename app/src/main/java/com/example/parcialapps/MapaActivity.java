@@ -22,6 +22,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.maps.model.Polygon;
+import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -41,6 +43,7 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
     List<LatLng> latLngList = new ArrayList<>();
     List<Marker> markerList = new ArrayList<>();
     Polyline polyline = null;
+    Polygon polygon = null;
 
     Location currentLocation;
     FusedLocationProviderClient flpc;
@@ -129,7 +132,8 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
                 Marker mark = mMap.addMarker(marker);
                 markerList.add(mark);
                 latLngList.add(latLng);
-                dibujarPolyline();
+                //dibujarPolyline();
+                dibujarPolygon();
             }
         });
     }
@@ -141,6 +145,15 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
         PolylineOptions polylineOptions = new PolylineOptions()
                 .addAll(latLngList).clickable(true);
         polyline = mMap.addPolyline(polylineOptions);
+    }
+
+    public void dibujarPolygon(){
+        if(polygon != null){
+            polygon.remove();
+        }
+        PolygonOptions polygonOptions = new PolygonOptions()
+                .addAll(latLngList).clickable(true);
+        polygon = mMap.addPolygon(polygonOptions);
     }
 
     @Override
